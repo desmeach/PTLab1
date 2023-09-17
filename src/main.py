@@ -29,5 +29,6 @@ def main():
     rating = CalcRating(students).calc()
     print("Rating: ", rating)
 
+
 if __name__ == "__main__":
     main()
