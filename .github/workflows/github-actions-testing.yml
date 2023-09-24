@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - feature/json-reader
+      - feature/*
 jobs:
     build:
       runs-on: ubuntu-latest
