@@ -54,11 +54,11 @@ class TestCalcRating:
         return data, students
 
     def test_init_calc_rating(self, input_data: tuple[DataType,
-                                                      RatingsType]) -> None:
+                                                      list]) -> None:
         calc_rating = QuartileRating(input_data[0])
         assert input_data[0] == calc_rating.data
 
     def test_calc(self, input_data: tuple[DataType,
-                                          RatingsType]) -> None:
+                                          list]) -> None:
         students = QuartileRating(input_data[0]).calc()
         assert students == input_data[1]
