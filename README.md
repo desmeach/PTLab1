@@ -21,7 +21,7 @@ json, для получения данных из файла формата Json
 
 ## UML-диаграмма классов
 
-![image](files://C:/Users/jzhang/Desktop/Isolated.png)
+![image](/images/uml_class.png)
 
 ## Выводы по работе
 
