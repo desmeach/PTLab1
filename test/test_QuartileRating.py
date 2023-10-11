@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from src.Types import DataType
-from src.CalcRating import CalcRating
+from src.QuartileRating import QuartileRating
 import pytest
 RatingsType = dict[str, float]
 
 
 class TestCalcRating:
     @pytest.fixture()
-    def input_data(self) -> tuple[DataType, RatingsType]:
+    def input_data(self) -> tuple[DataType, list]:
         data: DataType = {
             "Иванов Иван Иванович":
                 [
@@ -46,25 +46,19 @@ class TestCalcRating:
                     ("социология", 61)
                 ]
         }
-        rating_scores: RatingsType = {
-            "Иванов Иван Иванович": 86.0000,
-            "Петров Петр Петрович": 75.3333,
-            "Иванов Петр Дмитриевич": 64.3333,
-            "Антонов Антон Денисович": 68.3333,
-            "Пупкин Демид Романович": 92.6666,
-            "Добров Иван Александрович": 75.3333,
-        }
-        return data, rating_scores
+        students: list = ['Иванов Иван Иванович',
+                          'Петров Петр Петрович',
+                          'Пупкин Демид Романович',
+                          'Добров Иван Александрович'
+                          ]
+        return data, students
 
     def test_init_calc_rating(self, input_data: tuple[DataType,
                                                       RatingsType]) -> None:
-        calc_rating = CalcRating(input_data[0])
+        calc_rating = QuartileRating(input_data[0])
         assert input_data[0] == calc_rating.data
 
     def test_calc(self, input_data: tuple[DataType,
                                           RatingsType]) -> None:
-        rating = CalcRating(input_data[0]).calc()
-        for student in rating.keys():
-            rating_score = rating[student]
-            assert pytest.approx(rating_score,
-                                 abs=0.001) == input_data[1][student]
+        students = QuartileRating(input_data[0]).calc()
+        assert students == input_data[1]
