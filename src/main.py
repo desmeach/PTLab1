@@ -33,14 +33,14 @@ def main():
         students = reader.read(path)
         print("Students: ", students, '\n')
         rating = CalcRating(students).calc()
-        print("Rating: ", rating)
-        print('###################')
+        print("Rating: ", rating, '\n')
 
         # get QuartileRating
         students = reader.read(path)
         print("Students: ", students, '\n')
         third_quartile_students = QuartileRating(students).calc()
         print("Third quartile students: ", third_quartile_students)
+        print('###################')
 
 
 if __name__ == "__main__":
