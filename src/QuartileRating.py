@@ -17,3 +17,13 @@ class QuartileRating:
             if students_avg_ratings[student] >= quartile_value:
                 self.students.append(student)
         return self.students
+
+    # 1 1 2 _3 4 7 7 7 _8 8 8 8 9 _9 9 9 9 9
+    # i*(n+1/4)
+    # 1*(19/4) = 4.75
+    # 2*(19/4) = 9.5
+    # 3*(19/4) = 14.25
+    # 1 1 2 3
+    # 4 7 7 7 8
+    # 8 8 8 8 9
+    # 9 9 9 9 9

@@ -22,21 +22,25 @@ def main():
     for path in paths:
         filename, file_extension = os.path.splitext(path)
         if file_extension == '.json':
-            json_reader = JsonDataReader()
-            students = json_reader.read(path)
-            print("Students: ", students, '\n')
-            third_quartile_students = QuartileRating(students).calc()
-            print("Third quartile students: ", third_quartile_students)
+            reader = JsonDataReader()
         elif file_extension == '.txt':
             reader = TextDataReader()
-            students = reader.read(path)
-            print("Students: ", students, '\n')
-            rating = CalcRating(students).calc()
-            print("Rating: ", rating)
         else:
             print('Unexpected file extension.')
             return False
+
+        # get avg rating
+        students = reader.read(path)
+        print("Students: ", students, '\n')
+        rating = CalcRating(students).calc()
+        print("Rating: ", rating)
         print('###################')
+
+        # get QuartileRating
+        students = reader.read(path)
+        print("Students: ", students, '\n')
+        third_quartile_students = QuartileRating(students).calc()
+        print("Third quartile students: ", third_quartile_students)
 
 
 if __name__ == "__main__":
